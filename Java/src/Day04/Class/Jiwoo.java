@@ -26,6 +26,18 @@ public class Jiwoo {
 		System.out.println("공격B : " + pikachu20.bAttack());
 		System.out.println();
 		
+		
+		Raichu raichu = new Raichu();
+		System.out.println("::::: 라이츄 :::::");
+		System.out.println("에너지 : " + raichu.energy);
+		System.out.println("타입 : " + raichu.type);
+		System.out.println("공격A : " + raichu.aAttack());
+		System.out.println("공격B : " + raichu.bAttack());
+		System.out.println("공격C : " + raichu.cAttack());
+		System.out.println();
+		
+		
+		
 	}
 }
 

@@ -18,9 +18,17 @@ public class Pikachu {
 	// 생성자
 	// * 기본 생성자는 정의하지 않으면 컴파일러가 자동으로 정의해준다.
 	// 기본 생성자
+	// 생성자 자동 완성 : alt + shift + S : o
+	// 메소드(생성자) 오버로딩
 	public Pikachu() {
-		energy = 100;
-		type = "전기";
+//		energy = 100;
+//		type = "전기";
+		this(100, "전기");
+	}
+	
+	public Pikachu(int energy) {
+//		this.energy = energy;
+		this( energy, "전기" );
 	}
 	
 	// 매개변수가 있는 생성자
@@ -28,16 +36,24 @@ public class Pikachu {
 		this.energy = energy;
 		this.type = type;
 	}
-	
+
+
 	// 메소드
 	// - 접근지정자 반환타입 메소드명( 매개변수 ) { }
 	public String aAttack() {
 		return "십만볼트";
 	}
 	
+
 	public String bAttack() {
 		return "전광석화";
 	}
 
 	
 }
+
+
+
+
+
+
