@@ -1,0 +1,4 @@
+Hello Java~!
+Auto Close
+
+안녕하세요
