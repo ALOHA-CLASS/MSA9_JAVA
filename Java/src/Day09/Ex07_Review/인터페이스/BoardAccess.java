@@ -2,13 +2,15 @@ package Day09.Ex07_Review.인터페이스;
 
 public class BoardAccess implements BoardInterface {
 	
+	// 게시글 개수
 	int count = 5;
+	// 게시글 목록
 	Board[] boardList = {
-		new Board("제목01", "작성자01", "내용01"),
-		new Board("제목02", "작성자02", "내용02"),
-		new Board("제목03", "작성자03", "내용03"),
-		new Board("제목04", "작성자04", "내용04"),
-		new Board("제목05", "작성자05", "내용05"),
+		new Board(1, "제목01", "작성자01", "내용01", "2024/08/20 - 10:00", "2024/08/20 - 10:00"),
+		new Board(2, "제목02", "작성자02", "내용02", "2024/08/20 - 10:00", "2024/08/20 - 10:00"),
+		new Board(3, "제목03", "작성자03", "내용03", "2024/08/20 - 10:00", "2024/08/20 - 10:00"),
+		new Board(4, "제목04", "작성자04", "내용04", "2024/08/20 - 10:00", "2024/08/20 - 10:00"),
+		new Board(5, "제목05", "작성자05", "내용05", "2024/08/20 - 10:00", "2024/08/20 - 10:00"),
 	};
 	
 	/**
@@ -20,6 +22,22 @@ public class BoardAccess implements BoardInterface {
 	 */
 	@Override
 	public Board create(Board board) {
+		if( this.count == 5 ) {
+			System.out.println("게시글 목록이 꽉 찼습니다.");
+			return null;
+		}
+		
+		int boardNo = ++count;
+		String regDate = "2024/08/20 - 10:00";
+		String updDate = "2024/08/20 - 10:00";
+		board.setNo(boardNo);
+		board.setRegDate(regDate);
+		board.setUpdDate(updDate);
+		
+		boardList[boardNo-1] = board;
+		
+		System.out.println(board);
+		System.out.println("게시글이 등록되었습니다.");
 		return board;
 	}
 	
@@ -30,7 +48,11 @@ public class BoardAccess implements BoardInterface {
 	 */
 	@Override
 	public Board[] list() {
-		
+		if( this.count == 0 ) {
+			System.out.println("조회된 게시글이 없습니다.");
+			return null;
+		}
+		System.out.println("게시글 목록을 조회합니다.");
 		return boardList;
 	}
 	
@@ -42,8 +64,14 @@ public class BoardAccess implements BoardInterface {
 	 */
 	@Override
 	public Board read(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		// 유효하지 않은 경우
+		if( no < 1 || no > 5 ) {
+			System.out.println("1~5번의 게시글만 존재합니다.");
+			return null;
+		}
+		// 글번호 1~5 번에 해당되는지
+		System.out.println(no + "번 게시글을 조회합니다.");
+		return boardList[no-1];
 	}
 	
 	/**
@@ -56,8 +84,26 @@ public class BoardAccess implements BoardInterface {
 	 */
 	@Override
 	public int update(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+		int no = board.getNo();	// 수정할 게시글 번호
+		if( no > 5 || no < 0 ) {
+			System.out.println("1~5번 게시글만 존재합니다.");
+			return 0;	// 수정된 게시글 0개 (수정 X)
+		}
+		// 기존 게시글 정보 조회
+		Board oldBoard = boardList[no-1];
+				
+		String updateTitle = board.getTitle();
+		String updateWriter = board.getWriter();
+		String updateContent = board.getContent();
+		
+		// 수정할 정보만 변경
+		oldBoard.setTitle(updateTitle);
+		oldBoard.setWriter(updateWriter);
+		oldBoard.setContent(updateContent);
+		
+		boardList[no-1] = oldBoard;					
+		oldBoard.setUpdDate("2024/08/20 - 12:00");
+		return 1;
 	}
 	
 	/**
@@ -71,10 +117,44 @@ public class BoardAccess implements BoardInterface {
 	 */
 	@Override
 	public int delete(int no) {
-		// TODO Auto-generated method stub
-		return 0;
+		if( no > 5 || no < 0 ) {
+			System.out.println("1~5번 게시글만 존재합니다.");
+			return 0;	
+		}
+		if( count == 0 ) {
+			System.out.println("삭제할 게시글 없습니다.");
+			return 0;
+		}
+		
+		boardList[no-1] = null;		// null : 데이터 없음을 의미
+		
+		// no : index+1 : 다음 index
+		for (int i = no; i < boardList.length; i++) {
+			// 바로 앞의 위치 = 현재 접근한 위치
+			boardList[i-1] = boardList[i];
+		}
+		
+		// 가장 마지막 위치의 객체는 null로 비운다
+		boardList[count-1] = null;
+		
+		// 삭제 후, 게시글 개수 count -1 감소
+		count--;
+		
+		// 글번호 재세팅 : 글번호를 1~... 
+		for (int i = 0; i < boardList.length; i++) {
+			if( boardList[i] != null ) {
+				boardList[i].setNo( i+1 );
+			}
+		}
+		
+		return 1;			// 삭제한 게시글 개수
 	}
-	
-	
 
 }
+
+
+
+
+
+
+
