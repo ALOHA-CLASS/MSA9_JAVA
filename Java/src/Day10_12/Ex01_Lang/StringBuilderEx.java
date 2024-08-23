@@ -1,4 +1,4 @@
-package Day10.Ex01_Lang;
+package Day10_12.Ex01_Lang;
 
 public class StringBuilderEx {
 	
