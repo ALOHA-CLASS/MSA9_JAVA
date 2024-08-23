@@ -1,4 +1,4 @@
-package Day10_12.Ex02_Util;
+package Day10_13.Ex02_Util;
 
 import java.util.Random;
 
