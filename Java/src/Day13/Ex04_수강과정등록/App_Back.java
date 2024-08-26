@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class App {
+public class App_Back {
 	
 	static Scanner sc = new Scanner(System.in);							// 입력
 	static List<Course<?>> courseList = new ArrayList<Course<?>>();		// 과정 목록
@@ -63,8 +63,6 @@ public class App {
 		System.out.print("- 과정 명 : ");
 		String name = sc.nextLine();
 		
-		// * 컴파일 과정에서 와일드카드 타입 제한이 적용된다.
-		// -> 프로그램 실행 시, 다른 종류의 과정으로 잘못 생성이 되어 예외가 발생할 상황이 없다. 
 		Course<?> course = switch (type) {
 			case "일반인" -> {
 				Course<Person> newCouse = new Course<Person>();
@@ -101,7 +99,7 @@ public class App {
 	 * 수강생 등록
 	 */
 	public static void addStudent() {
-		System.out.print("- 과정 종류 (일반인, 직장인, 학생) : ");
+		System.out.print("- 과정 종류 (일반인, 직장인, 학생, 고등학생, 중학생) : ");
 		String courseType = sc.nextLine();
 		System.out.print("- 수강생 종류 (일반인, 직장인, 학생, 고등학생, 중학생) : ");
 		String type = sc.nextLine();
@@ -110,55 +108,61 @@ public class App {
 		System.out.print("- 등록할 과정 명 : ");
 		String courseName = sc.nextLine();
 		
-		Course<?> selectedCourse = new Course<>();
+		Course<?> selectedCourse = new Course();
 		
-		Person newStudent = null;
 		// 해당 수강생을 등록할 과정을 지정
 		for (int i = 0; i < courseList.size(); i++) {
 			Course<?> course = courseList.get(i);
 			// 입력한 과정명과 등록된 과정명이 일치하면
 			if( course.getName().equals(courseName) ) {
-				selectedCourse = course;		// 지정된 과정 
-				// 등록할 과정은 직장인이라, Course<Worker> 로 되어 있고
-				// List<Workder> students 로 지정된다.
-				// 따라서 이 수강생 목록에 추가할 Worker 객체를 생성한다.
-				// *********************
-				switch (type) {
-					case "일반인": 
-								newStudent = new Person(name); 	
-								break;
-					case "직장인": 
-								newStudent = new Worker(name);	
-								break;
-					case "학생": 
-								newStudent = new Student(name);
-								break;
-				}
-				// *********************
-				
+				selectedCourse = course;		// 지정된 과정
 				break;
 			}
 		}
 		
 		// ** 여기서 과정별로 수강할 수 없는 수강생 등록이 이루어지면 예외가 발생하도록 코드를 수정해볼 것
-		// 과정 종류에 맞지 않는 수강생 종류를 등록할 경우 클래스 변환 예외가 발생한다.
-		try {
-			switch (courseType) {
-				case "일반인": 
-					((Course<Person>) selectedCourse).addStudent(newStudent);
-					break;
-				case "직장인": 
-					((Course<Worker>) selectedCourse).addStudent((Worker) newStudent);
-					break;
-				case "학생": 
-					((Course<Student>) selectedCourse).addStudent((Student) newStudent);
-					break;
-			}
-		} catch (Exception e) {
-			System.err.println(courseType + " 과정에 " + type + "을 등록할 수 없습니다.");
-		}
 		
-		studentList.add(newStudent);
+		// 수강생 목록에 지금 입력한 수강생을 추가한다.
+		// * 수강생 종류에 맞게 객체를 생성하여 추가한다.
+		Person student = switch (courseType) {
+			case "일반인" -> {
+				Course<Person> course = (Course<Person>) selectedCourse;
+				List<Person> students = course.getStudents();
+				Person newStudent = new Person(name);
+				students.add( newStudent );
+				yield newStudent;
+			}
+			case "직장인" ->{
+				Course<Worker> course = (Course<Worker>) selectedCourse;
+				List<Worker> students = course.getStudents();
+				Worker newStudent = new Worker(name);
+				students.add( newStudent );
+				yield newStudent;
+			}
+			case "학생" -> {
+				Course<Student> course = (Course<Student>) selectedCourse;
+				List<Student> students = course.getStudents();
+				Student newStudent = new Student(name);
+				students.add( newStudent );
+				yield newStudent;
+			}
+			case "고등학생" -> {
+				Course<Student> course = (Course<Student>) selectedCourse;
+				List<Student> students = course.getStudents();
+				Student newStudent = new Student(name);
+				students.add( newStudent );
+				yield newStudent;
+			}
+			case "중학생" -> {
+				Course<Student> course = (Course<Student>) selectedCourse;
+				List<Student> students = course.getStudents();
+				Student newStudent = new Student(name);
+				students.add( newStudent );
+				yield newStudent;
+			}
+			default -> throw new IllegalArgumentException("유효하지 않은 수강생 종류 입니다 : " + type);
+		};
+		studentList.add(student);	// 원생 목록에 수강생 추가
 	}
 
 	/**

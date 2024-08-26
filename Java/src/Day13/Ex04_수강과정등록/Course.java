@@ -67,6 +67,10 @@ public class Course <T> implements Manager {
 		}
 		System.out.println();
 	}
+	
+	public void addStudent(T t) {
+		getStudents().add(t);
+	}
 
 	@Override
 	public String toString() {
