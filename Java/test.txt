@@ -1,4 +1,2 @@
-Hello Java~!
-Auto Close
-
 안녕하세요
+김조은입니다.

@@ -1,4 +1,4 @@
-package Day16.Ex01_ByteStream;
+package Day16.Ex02_CharacterStream;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
