@@ -1,0 +1,26 @@
+package application;
+	
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+
+
+public class Main extends Application {
+	
+	// 화면 A, B 객체 선언
+	private Scene sceneA, sceneB;
+	
+	@Override
+	public void start(Stage primaryStage) {
+		// 화면 A 생성
+		
+		
+		// 화면 B 생성
+		
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

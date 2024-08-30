@@ -1,0 +1,13 @@
+package application;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
+public class MainController {
+	
+	@FXML
+    private Button button;		// Main.fxml 파일에서 fx:id="button" --> Button button 일치 
+
+	
+	// 버튼 클릭 이벤트 메소드
+}

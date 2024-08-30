@@ -1,0 +1,44 @@
+package application;
+	
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+
+
+public class Main extends Application {
+	
+	/**
+	 * start()
+	 * : 화면 시작 메소드
+	 */
+	@Override
+	public void start(Stage stage) {
+		// 단일 Stage 객체로 부터 화면이 시작된다.
+		
+		// Scene 을 지정하기 위한 Group 객체 <- 컨테이너
+		Group root = new Group();
+		
+		// Scene 생성
+		Scene scene = new Scene(root);
+
+		/* Stage 설정 */
+		
+		
+		
+		
+		// Scene 을 Stage 에 지정
+		stage.setScene(scene);
+		// Stage 출력
+		stage.show();
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
+
+
+
+
+

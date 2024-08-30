@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Label layoutX="240.0" layoutY="32.0" text="점메추">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="menu" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="138.0" text="오늘의 점심은?" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Button fx:id="button" layoutX="213.0" layoutY="269.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="174.0" text="추천">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

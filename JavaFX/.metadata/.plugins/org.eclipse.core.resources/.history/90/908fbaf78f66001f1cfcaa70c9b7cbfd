@@ -1,0 +1,7 @@
+module 점메추 {
+	requires javafx.controls;
+	requires javafx.fxml;		// FXML 설정
+	requires javafx.animation; // 애니메이션 관련 모듈
+	
+	opens application to javafx.graphics, javafx.fxml;
+}

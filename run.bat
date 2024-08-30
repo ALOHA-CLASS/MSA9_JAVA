@@ -1,3 +1,3 @@
 @echo off
-java -jar Board.jar
+java -jar Chat.jar
 pause

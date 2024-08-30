@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Label layoutX="224.0" layoutY="31.0" text="점메추">
+         <font>
+            <Font name="NanumSquare Bold" size="47.0" />
+         </font>
+      </Label>
+      <Label fx:id="menu" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="405.0" prefHeight="60.0" prefWidth="300.0" text="오늘의 점심은?" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="NanumSquare Bold" size="40.0" />
+         </font>
+      </Label>
+      <Button fx:id="button" layoutX="212.0" layoutY="484.0" mnemonicParsing="false" 
+      		  onAction="#buttonClick" prefHeight="56.0" prefWidth="174.0" text="추천">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Button>
+      <Pane layoutX="150.0" layoutY="105.0" prefHeight="300.0" prefWidth="300.0">
+         <children>
+            <ImageView fx:id="img" fitHeight="240.0" fitWidth="240.0" layoutX="30.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
