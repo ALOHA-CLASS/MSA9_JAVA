@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ListController">
+   <children>
+      <Label layoutX="320.0" layoutY="30.0" text="게시판 프로그램">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <TableView fx:id="boardTableView" layoutX="95.0" layoutY="110.0" prefHeight="400.0" prefWidth="740.0">
+        <columns>
+          <TableColumn fx:id="colNo" prefWidth="60.0" text="번호" />
+          <TableColumn fx:id="colTitle" prefWidth="329.0" text="제목" />
+            <TableColumn fx:id="colWriter" prefWidth="129.0" text="작성자" />
+            <TableColumn fx:id="colRegDate" prefWidth="120.0" text="등록일자" />
+            <TableColumn fx:id="colView" prefWidth="99.0" text="조회수" />
+        </columns>
+      </TableView>
+      <Button layoutX="715.0" layoutY="527.0" mnemonicParsing="false" onAction="#toInsert" prefHeight="60.0" prefWidth="120.0" text="글쓰기">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
