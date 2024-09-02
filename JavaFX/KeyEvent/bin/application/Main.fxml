@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="300.0" layoutY="201.0" radius="59.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button focusTraversable="false" layoutX="271.0" layoutY="14.0" mnemonicParsing="false" onAction="#up" text="↑">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button focusTraversable="false" layoutX="21.0" layoutY="172.0" mnemonicParsing="false" onAction="#left" text="←">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button focusTraversable="false" layoutX="271.0" layoutY="329.0" mnemonicParsing="false" onAction="#down" text="↓">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button focusTraversable="false" layoutX="519.0" layoutY="172.0" mnemonicParsing="false" onAction="#right" text="→">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
